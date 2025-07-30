@@ -1,0 +1,52 @@
+# Aqui você pode gerenciar mensagens de integração
+hooks:
+  worldguard:
+    # TODO: Adicionar mensagens de integração com o WorldGuard
+  vault:
+    cant-afford-command: "%prefix%&cVocê precisa de &6$%cost% &cpara executar este comando."
+
+# Mensagens relacionadas ao tempo de espera para teleporte
+teleport-warmup:
+  warmup: "%prefix%&aTeleportando em %time% segundos... Não se mova!"
+  warmup-actionbar: "&aTeleportando em %time% segundos..."
+  cancelled: "%prefix%&cVocê se moveu! Teleporte cancelado."
+  cancelled-actionbar: "&cVocê se moveu! Teleporte cancelado."
+
+# Mensagens relacionadas a comandos
+commands:
+  # Aqui em cima você vai achar mensagens que podem ser utilizadas em vários comandos
+  no-permission: "%prefix%&cVocê não tem permissão para executar este comando."
+  in-cooldown: "%prefix%&cVocê deve esperar %timeleft% segundos antes de usar este comando novamente."
+  cant-find-player: "%prefix%&cEste jogador não foi encontrado."
+
+  # Aqui embaixo vai achar mensagens especificas de alguns comandos.
+  main:
+    help:
+      help-perm: |-
+        %prefix%&bUsos de &e/%command%&b:
+        &c-> &e/%command% &a(help|?)
+        &c-> &e/%command% &a(reload|rl) &6[all, commands, config, languages]
+        &c-> &e/%command% &a(version|ver) &6[update]
+        &c-> &e/%command% &aconverter (converter-type) &7Converte o banco de dados de um lugar a outro
+      help-noperm: |-
+        %prefix%&bUsos de &e/%command%&b:
+        &c-> &e/%command% &a(help|?)
+        &c-> &e/%command% &a(version|ver)
+    version:
+      output: "%prefix%&bVersão atual: &a%version%"
+      update:
+        output: "%prefix%&azHomes foi atualizado para a versão mais recente &e(%update%)&a, reinicie o servidor para aplicar as alterações."
+        no-update: "%prefix%&aVocê já está usando a versão mais recente do zHomes."
+    reload:
+      usage: |-
+        %prefix%&bUsos de &e/%command% &a(reload|rl)&b:
+        &c-> &e/%command% &a(reload|rl) &6[all, commands, config, languages]
+      output: "%prefix%&aPlugin recarregado em &b%time%ms!"
+      commands:
+        output: "%prefix%&aTodos comandos do plugin foram recarregados em &b%time%ms!"
+      config:
+        output: "%prefix%&aA configuração do plugin foi recarregada em &b%time%ms!"
+      languages:
+        output: |-
+          %prefix%&aAs linguas do plugin foram recarregadas em &b%time%ms!
+          &7Nota: Isso não ira recarregar a lingua no config.yml, use '/%command% reload config' para isso.

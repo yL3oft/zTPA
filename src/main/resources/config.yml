@@ -1,0 +1,70 @@
+prefix: "&8[&4zTPA&8] "
+
+general:
+  # Here you can define the language of the plugin, all languages can be found, edited and created on languages' directory.
+  # DEFAULT OPTIONS: [en, pt-br, <custom>] --- DEFAULT: en
+  language: "en"
+  # Define it the plugin should be updated automatically
+  # OPTIONS: [true, false] --- DEFAULT: true
+  auto-update: false
+  # Should players with permissions be notified about plugin updates upon joining?
+  # OPTIONS: [true, false] --- DEFAULT: true
+  announce-update: true
+  # Here you can define if metrics should be on or off.
+  # !WARNING: This option does not work with reload.
+  # OPTIONS: [true, false] --- DEFAULT: true
+  metrics: true
+
+commands:
+  # Mostly everything below needs a restart to apply
+  main:
+    command: ztpa
+    description: "The main command for the plugin"
+    permission: ztpa.command.main # True by default
+    cooldown: 0.0
+    aliases: []
+    # Sub command - Help
+    help:
+      permission: "ztpa.command.main.help" # Only OP by default
+    # Sub command - Version
+    version:
+      permission: "ztpa.command.main.version" # True by default
+      update:
+        permission: "ztpa.command.main.version.update" # Only OP by default
+    # Sub command - Reload
+    reload:
+      permission: "ztpa.command.main.reload" # Only OP by default
+  tpa:
+    command: tpa
+    description: "Teleport to a player"
+    permission: ztpa.command.tpa # True by default
+    cooldown: 0.0
+    aliases: []
+  tpaccept:
+    command: tpaccept
+    description: "Accept a teleport request"
+    permission: ztpa.command.tpaccept # True by default
+    cooldown: 0.0
+    aliases: []
+  tpdeny:
+    command: tpdeny
+    description: "Deny a teleport request"
+    permission: ztpa.command.tpdeny # True by default
+    cooldown: 0.0
+    aliases:
+      - tpadeny
+  tpcancel:
+    command: tpcancel
+    description: "Cancel a teleport request"
+    permission: ztpa.command.tpcancel # True by default
+    cooldown: 0.0
+    aliases:
+      - tpacancel
+
+# In this section you can define the permissions for the plugin
+# Permissions for commands can be found on the commands section
+permissions:
+  bypass:
+    # This permission allows the player to bypass the cost of the command
+    # Default: %command_permission%.command-cost
+    command-cost: "%command_permission%.bypass.command-cost" # Only OP by default

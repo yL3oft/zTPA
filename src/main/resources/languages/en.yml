@@ -1,0 +1,52 @@
+# Here you can manage hook messages
+hooks:
+  worldguard:
+    # TODO: Add messages for WorldGuard hooks
+  vault:
+    cant-afford-command: "%prefix%&cYou need &6$%cost% &cin order to execute this command."
+
+# Messages related to teleport warmup
+teleport-warmup:
+  warmup: "%prefix%&aTeleporting in %time% seconds... Don't move!"
+  warmup-actionbar: "&aTeleporting in %time% seconds..."
+  cancelled: "%prefix%&cYou moved! Teleportation cancelled."
+  cancelled-actionbar: "&cYou moved! Teleportation cancelled."
+
+# Messages related to commands
+commands:
+  # Up here you will find messages that can be used in multiple commands
+  no-permission: "%prefix%&cYou don't have permission to execute this command."
+  in-cooldown: "%prefix%&cYou must wait %timeleft% seconds before using this command again."
+  cant-find-player: "%prefix%&cThis player was not found."
+
+  # Below you will find messages specific for the commands
+  main:
+    help:
+      help-perm: |-
+        %prefix%&bUsages of &e/%command%&b:
+        &c-> &e/%command% &a(help|?)
+        &c-> &e/%command% &a(reload|rl) &6[all, commands, config, languages]
+        &c-> &e/%command% &a(version|ver) &6[update]
+        &c-> &e/%command% &aconverter (converter-type) &7Convert data from one place to another
+      help-noperm: |-
+        %prefix%&bUsages of &e/%command%&b:
+        &c-> &e/%command% &a(help|?)
+        &c-> &e/%command% &a(version|ver)
+    version:
+      output: "%prefix%&bCurrent version: &a%version%"
+      update:
+        output: "%prefix%&azHomes updated to the latest version &e(%update%)&a, please restart your server to apply the changes."
+        no-update: "%prefix%&aYou are already using the latest version of zHomes."
+    reload:
+      usage: |-
+        %prefix%&bUsages of &e/%command% &a(reload|rl)&b:
+        &c-> &e/%command% &a(reload|rl) &6[all, commands, config, languages]
+      output: "%prefix%&aReloaded plugin in &b%time%ms&a."
+      commands:
+        output: "%prefix%&aReloaded all plugin commands in &b%time%ms&a."
+      config:
+        output: "%prefix%&aReloaded plugin config file in &b%time%ms&a."
+      languages:
+        output: |-
+          %prefix%&aReloaded plugin languages in &b%time%ms&a.
+          &7Note: This will not update the language from config.yml, use '/%command% reload config' to do that.

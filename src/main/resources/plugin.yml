@@ -1,0 +1,14 @@
+name: zTPA
+version: ${version}
+description: ${description}
+main: me.yleoft.zTPA.zTPA
+author: yLeoft
+website: ${url}
+api-version: "1.13"
+softdepend:
+  - PlaceholderAPI
+  - WorldGuard
+  - Vault
+folia-supported: true
+commands: {}
+permissions: {}
