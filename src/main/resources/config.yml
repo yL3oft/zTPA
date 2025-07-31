@@ -15,6 +15,29 @@ general:
   # OPTIONS: [true, false] --- DEFAULT: true
   metrics: true
 
+tpa-options:
+  # Defines the expire time of the teleport requests in seconds.
+    # OPTIONS: [>=0 INT] --- DEFAULT: 120
+  expire-time: 120
+    # Should the plugin play an enderman warp sound when the player teleports to a home?
+  # OPTIONS: [true, false] --- DEFAULT: true
+  play-sound: true
+
+  # Tpa warmup options
+  warmup:
+    # This option defines if the warmup should be enabled or not.
+    # OPTIONS: [true, false] --- DEFAULT: true
+    enable: true
+    # Defines the time of the warmup in seconds.
+    # OPTIONS: [>=0 INT] --- DEFAULT: 5
+    time: 5
+    # Should the warmup be cancelled when the player moves?
+    # OPTIONS: [true, false] --- DEFAULT: true
+    cancel-on-move: false
+    # Should the warmup be shown in the actionbar?
+    # OPTIONS: [true, false] --- DEFAULT: true
+    show-on-actionbar: true
+
 commands:
   # Mostly everything below needs a restart to apply
   main:
@@ -40,12 +63,14 @@ commands:
     permission: ztpa.command.tpa # True by default
     cooldown: 0.0
     aliases: []
+    command-cost: 0  # Requires Vault to work
   tpaccept:
     command: tpaccept
     description: "Accept a teleport request"
     permission: ztpa.command.tpaccept # True by default
     cooldown: 0.0
     aliases: []
+    command-cost: 0  # Requires Vault to work
   tpdeny:
     command: tpdeny
     description: "Deny a teleport request"
@@ -53,18 +78,23 @@ commands:
     cooldown: 0.0
     aliases:
       - tpadeny
-  tpcancel:
-    command: tpcancel
+    command-cost: 0  # Requires Vault to work
+  tpacancel:
+    command: tpacancel
     description: "Cancel a teleport request"
     permission: ztpa.command.tpcancel # True by default
     cooldown: 0.0
     aliases:
-      - tpacancel
+      - tpcancel
+    command-cost: 0  # Requires Vault to work
 
 # In this section you can define the permissions for the plugin
 # Permissions for commands can be found on the commands section
 permissions:
   bypass:
+    # This permission allows the player to bypass the teleportation warmup
+    # Default: zhomes.bypass.warmup
+    warmup: "ztpa.bypass.warmup" # Only OP by default
     # This permission allows the player to bypass the cost of the command
     # Default: %command_permission%.command-cost
     command-cost: "%command_permission%.bypass.command-cost" # Only OP by default

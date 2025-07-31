@@ -4,6 +4,7 @@ import com.zTPA.api.event.player.ExecuteMainCommandEvent;
 import me.yleoft.zAPI.managers.FileManager;
 import me.yleoft.zAPI.managers.PluginYAMLManager;
 import me.yleoft.zAPI.utils.FileUtils;
+import me.yleoft.zTPA.constructors.TeleportRequest;
 import me.yleoft.zTPA.utils.ConfigUtils;
 import me.yleoft.zTPA.utils.LanguageUtils;
 import me.yleoft.zTPA.zTPA;
@@ -158,6 +159,10 @@ public class MainCommand extends ConfigUtils implements CommandExecutor {
                     fu.reloadConfig(false);
                 }
                 loadzAPIMessages();
+                TeleportRequest.setTpaLang(new LanguageUtils.Tpa());
+                TeleportRequest.setTpacceptLang(new LanguageUtils.Tpaccept());
+                TeleportRequest.setTpdenyLang(new LanguageUtils.Tpdeny());
+                TeleportRequest.setTpacancelLang(new LanguageUtils.Tpacancel());
                 break;
         }
         return System.currentTimeMillis() - now;

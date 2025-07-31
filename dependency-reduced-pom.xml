@@ -4,9 +4,9 @@
   <groupId>me.yleoft</groupId>
   <artifactId>zTpa</artifactId>
   <name>zTpa</name>
-  <version>0.1.0-ALPHA</version>
+  <version>0.2.0-ALPHA</version>
   <description>Your new favorite tpa plugin</description>
-  <url>https://github.com/yL3oft/zHomes</url>
+  <url>https://github.com/yL3oft/zTPA</url>
   <developers>
     <developer>
       <id>yleoft</id>

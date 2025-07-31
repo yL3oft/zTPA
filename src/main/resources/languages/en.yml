@@ -18,6 +18,8 @@ commands:
   no-permission: "%prefix%&cYou don't have permission to execute this command."
   in-cooldown: "%prefix%&cYou must wait %timeleft% seconds before using this command again."
   cant-find-player: "%prefix%&cThis player was not found."
+  only-executable-by-players: "%prefix%&cThis command can only be executed by players."
+  more-than-one-request: "%prefix%&cYou have more than one teleport request, please specify the player you want to accept/deny the request from."
 
   # Below you will find messages specific for the commands
   main:
@@ -27,7 +29,6 @@ commands:
         &c-> &e/%command% &a(help|?)
         &c-> &e/%command% &a(reload|rl) &6[all, commands, config, languages]
         &c-> &e/%command% &a(version|ver) &6[update]
-        &c-> &e/%command% &aconverter (converter-type) &7Convert data from one place to another
       help-noperm: |-
         %prefix%&bUsages of &e/%command%&b:
         &c-> &e/%command% &a(help|?)
@@ -35,8 +36,8 @@ commands:
     version:
       output: "%prefix%&bCurrent version: &a%version%"
       update:
-        output: "%prefix%&azHomes updated to the latest version &e(%update%)&a, please restart your server to apply the changes."
-        no-update: "%prefix%&aYou are already using the latest version of zHomes."
+        output: "%prefix%&azAPI updated to the latest version &e(%update%)&a, please restart your server to apply the changes."
+        no-update: "%prefix%&aYou are already using the latest version of zAPI."
     reload:
       usage: |-
         %prefix%&bUsages of &e/%command% &a(reload|rl)&b:
@@ -50,3 +51,32 @@ commands:
         output: |-
           %prefix%&aReloaded plugin languages in &b%time%ms&a.
           &7Note: This will not update the language from config.yml, use '/%command% reload config' to do that.
+  tpa:
+    usage: "%prefix% &c-> &e/%command% (Player)"
+    yourself: "%prefix%&cYou can't send a teleport request to yourself."
+    already-requested: "%prefix%&cYou already sent a teleport request to &e%player%&c."
+    output: |-
+      &a
+      &aTeleport request sent to &e%player%
+      &aTo cancel, use &e/%command-tpacancel%
+      &a
+    request-received: |-
+      &a
+      &aYou have received a teleport request from &e%player%
+      &aTo accept, use &e/%command-tpaccept%
+      &aTo deny, use &e/%command-tpdeny%
+      &aThis request will expire in &c%time% seconds
+      &a
+  tpaccept:
+    output: "%prefix%&aTeleport request from &e%player%&a accepted."
+    no-request: "%prefix%&cYou don't have any teleport request to accept."
+    no-request-from: "%prefix%&cYou don't have any teleport request from &e%player%&c."
+  tpdeny:
+    output: "%prefix%&aTeleport request from &e%player%&a denied."
+    no-request: "%prefix%&cYou don't have any teleport request to deny."
+    no-request-from: "%prefix%&cYou don't have any teleport request from &e%player%&c."
+  tpacancel:
+    output: "%prefix%&aAll your teleport requests have been cancelled."
+    output-to: "%prefix%&aTeleport request to &e%player%&a cancelled."
+    no-request: "%prefix%&cYou don't have any teleport request to cancel."
+    no-request-to: "%prefix%&cYou don't have any teleport request to &e%player%&c."

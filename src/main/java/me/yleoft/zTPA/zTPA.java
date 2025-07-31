@@ -1,11 +1,13 @@
 package me.yleoft.zTPA;
 
+import com.sk89q.worldguard.protection.flags.StateFlag;
 import me.yleoft.zAPI.Metrics;
 import me.yleoft.zAPI.managers.FileManager;
 import me.yleoft.zAPI.managers.UpdateManager;
 import me.yleoft.zAPI.utils.FileUtils;
 import me.yleoft.zAPI.zAPI;
 import me.yleoft.zTPA.commands.*;
+import me.yleoft.zTPA.constructors.TeleportRequest;
 import me.yleoft.zTPA.hooks.PlaceholderAPIHandler;
 import me.yleoft.zTPA.listeners.*;
 import me.yleoft.zTPA.tabcompleters.*;
@@ -21,10 +23,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Level;
 
 import static java.util.Objects.requireNonNull;
@@ -36,10 +36,19 @@ import static me.yleoft.zTPA.utils.LanguageUtils.loadzAPIMessages;
 public final class zTPA extends JavaPlugin {
 
     public static FileUtils configFileUtils;
+    public static StateFlag sendTeleportRequestFlag;
+    public static StateFlag acceptTeleportRequestFlag;
+    public static StateFlag denyTeleportRequestFlag;
+    public static StateFlag cancelTeleportRequestFlag;
+    public static StateFlag bypassTpaWarmupFlag;
+    public static StateFlag bypassTpaCostFlag;
 
     public static boolean usePlaceholderAPI = false;
     public static boolean useWorldGuard = false;
     public static boolean useVault = false;
+
+    public static final Map<UUID, List<TeleportRequest>> tpaRequests = new ConcurrentHashMap<>();
+    public static final Map<UUID, List<TeleportRequest>> targetRequestMap = new ConcurrentHashMap<>();
 
     private static zTPA main;
     public static ConfigUtils cfgu;
@@ -153,6 +162,7 @@ public final class zTPA extends JavaPlugin {
         if(papi != null) {
             zAPI.unregisterPlaceholderExpansion();
         }
+        unregisterPermissions();
         main = null;
     }
 
@@ -212,6 +222,10 @@ public final class zTPA extends JavaPlugin {
         try {
             unregisterCommands();
             registerCommand(cfgu.CmdMainCommand(), new MainCommand(), cfgu.CmdMainCooldown(), new MainCompleter(), cfgu.CmdMainDescription(), cfgu.CmdMainAliases().toArray(new String[0]));
+            registerCommand(cfgu.CmdTpaCommand(), new TpaCommand(), cfgu.CmdTpaCooldown(), new TpaCompleter(), cfgu.CmdTpaDescription(), cfgu.CmdTpaAliases().toArray(new String[0]));
+            registerCommand(cfgu.CmdTpacceptCommand(), new TpacceptCommand(), cfgu.CmdTpacceptCooldown(), new TpaCompleter(), cfgu.CmdTpacceptDescription(), cfgu.CmdTpacceptAliases().toArray(new String[0]));
+            registerCommand(cfgu.CmdTpdenyCommand(), new TpdenyCommand(), cfgu.CmdTpdenyCooldown(), new TpaCompleter(), cfgu.CmdTpdenyDescription(), cfgu.CmdTpdenyAliases().toArray(new String[0]));
+            registerCommand(cfgu.CmdTpacancelCommand(), new TpacancelCommand(), cfgu.CmdTpacancelCooldown(), new TpaCompleter(), cfgu.CmdTpacancelDescription(), cfgu.CmdTpacancelAliases().toArray(new String[0]));
         } catch (Exception e) {
             throw new RuntimeException("Failed to load commands", e);
         }
@@ -225,9 +239,14 @@ public final class zTPA extends JavaPlugin {
             registerPermission(cfgu.CmdMainPermission(), "Permission to use the '/" + cfgu.CmdMainCommand() + "' command", PermissionDefault.TRUE);
             registerPermission(cfgu.CmdMainHelpPermission(), "Permission to use the '/" + cfgu.CmdMainCommand() + " (help|?)' command (With perm)", PermissionDefault.OP);
             registerPermission(cfgu.CmdMainVersionPermission(), "Permission to use the '/" + cfgu.CmdMainCommand() + " (version|ver)' command", PermissionDefault.TRUE);
-            registerPermission(cfgu.CmdMainVersionPermission(), "Permission to use the '/" + cfgu.CmdMainCommand() + " (version|ver) update' command", PermissionDefault.OP);
+            registerPermission(cfgu.CmdMainVersionUpdatePermission(), "Permission to use the '/" + cfgu.CmdMainCommand() + " (version|ver) update' command", PermissionDefault.OP);
             registerPermission(cfgu.CmdMainReloadPermission(), "Permission to use the '/" + cfgu.CmdMainCommand() + " (reload|rl)' command", PermissionDefault.OP, helpANDmainChildren);
+            registerPermission(cfgu.CmdTpaPermission(), "Permission to use the '/" + cfgu.CmdTpaCommand() + "' command", PermissionDefault.TRUE);
+            registerPermission(cfgu.CmdTpacceptPermission(), "Permission to use the '/" + cfgu.CmdTpacceptCommand() + "' command", PermissionDefault.TRUE);
+            registerPermission(cfgu.CmdTpdenyPermission(), "Permission to use the '/" + cfgu.CmdTpdenyCommand() + "' command", PermissionDefault.TRUE);
+            registerPermission(cfgu.CmdTpacancelPermission(), "Permission to use the '/" + cfgu.CmdTpacancelCommand() + "' command", PermissionDefault.TRUE);
         } catch (Exception e) {
+            e.printStackTrace();
             helper.sendMsg(getServer().getConsoleSender(), this.coloredPluginName + "§cError registering permissions (This doesn't affect anything in general)!");
         }
         //</editor-fold>

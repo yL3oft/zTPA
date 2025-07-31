@@ -18,6 +18,8 @@ commands:
   no-permission: "%prefix%&cVocê não tem permissão para executar este comando."
   in-cooldown: "%prefix%&cVocê deve esperar %timeleft% segundos antes de usar este comando novamente."
   cant-find-player: "%prefix%&cEste jogador não foi encontrado."
+  only-executable-by-players: "%prefix%&cEste comando só pode ser executado por jogadores."
+  more-than-one-request: "%prefix%&cVocê tem mais de um pedido de teleporte, por favor especifique o jogador do qual você deseja aceitar/recusar o pedido."
 
   # Aqui embaixo vai achar mensagens especificas de alguns comandos.
   main:
@@ -27,7 +29,6 @@ commands:
         &c-> &e/%command% &a(help|?)
         &c-> &e/%command% &a(reload|rl) &6[all, commands, config, languages]
         &c-> &e/%command% &a(version|ver) &6[update]
-        &c-> &e/%command% &aconverter (converter-type) &7Converte o banco de dados de um lugar a outro
       help-noperm: |-
         %prefix%&bUsos de &e/%command%&b:
         &c-> &e/%command% &a(help|?)
@@ -35,8 +36,8 @@ commands:
     version:
       output: "%prefix%&bVersão atual: &a%version%"
       update:
-        output: "%prefix%&azHomes foi atualizado para a versão mais recente &e(%update%)&a, reinicie o servidor para aplicar as alterações."
-        no-update: "%prefix%&aVocê já está usando a versão mais recente do zHomes."
+        output: "%prefix%&azAPI foi atualizado para a versão mais recente &e(%update%)&a, reinicie o servidor para aplicar as alterações."
+        no-update: "%prefix%&aVocê já está usando a versão mais recente do zAPI."
     reload:
       usage: |-
         %prefix%&bUsos de &e/%command% &a(reload|rl)&b:
@@ -50,3 +51,32 @@ commands:
         output: |-
           %prefix%&aAs linguas do plugin foram recarregadas em &b%time%ms!
           &7Nota: Isso não ira recarregar a lingua no config.yml, use '/%command% reload config' para isso.
+  tpa:
+    usage: "%prefix% &c-> &e/%command% (Jogador)"
+    yourself: "%prefix%&cVocê não pode enviar um pedido de teleporte para si mesmo."
+    already-requested: "%prefix%&cVocê já enviou um pedido de teleporte para &e%player%&c."
+    output: |-
+      &a
+      &aPedido de teleporte enviado para &e%player%
+      &aPara cancelar, use &e/%command-tpacancel%
+      &a
+    request-received: |-
+      &a
+      &aVocê recebeu um pedido de teleporte de &e%player%
+      &aPara aceitar, use &e/%command-tpaccept%
+      &aPara recusar, use &e/%command-tpdeny%
+      &aEste pedido irá expirar em &c%time% segundos
+      &a
+  tpaccept:
+    output: "%prefix%&aPedido de teleporte de &e%player%&a aceito."
+    no-request: "%prefix%&cVocê não tem nenhum pedido de teleporte para aceitar."
+    no-request-from: "%prefix%&cVocê não tem nenhum pedido de teleporte de &e%player%&c."
+  tpdeny:
+    output: "%prefix%&aPedido de teleporte de &e%player%&a recusado."
+    no-request: "%prefix%&cVocê não tem nenhum pedido de teleporte para recusar."
+    no-request-from: "%prefix%&cVocê não tem nenhum pedido de teleporte de &e%player%&c."
+  tpacancel:
+    output: "%prefix%&aTodos os pedidos de teleporte foram cancelados."
+    output-to: "%prefix%&aPedido de teleporte para &e%player%&a cancelado."
+    no-request: "%prefix%&cVocê não tem nenhum pedido de teleporte para cancelar."
+    no-request-to: "%prefix%&cVocê não tem nenhum pedido de teleporte para &e%player%&c."

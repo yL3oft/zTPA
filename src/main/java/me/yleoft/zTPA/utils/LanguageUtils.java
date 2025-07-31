@@ -71,6 +71,178 @@ public class LanguageUtils extends ConfigUtils {
         return returned;
     }
 
+    public static class Tpa implements Commands {
+        public YamlConfiguration cfg;
+
+        public Tpa() {
+            this.cfg = LanguageUtils.getConfigFile();
+        }
+
+        public String getCmd() {
+            return "tpa";
+        }
+
+        public String getUsage() {
+            String path = formPath(cmds, getCmd(), "usage");
+            return this.cfg.getString(path)
+                    .replace("%command%", zTPA.cfgu.CmdTpaCommand());
+        }
+
+        public String getOutput() {
+            return null;
+        }
+
+        public String getOutput(String target) {
+            String path = formPath(cmds, getCmd(), "output");
+            return this.cfg.getString(path)
+                    .replace("%command%", zTPA.cfgu.CmdTpaCommand())
+                    .replace("%player%", target);
+        }
+
+        public String getYourself() {
+            String path = formPath(cmds, getCmd(), "yourself");
+            return this.cfg.getString(path)
+                    .replace("%command%", zTPA.cfgu.CmdTpaCommand());
+        }
+
+        public String getAlreadyRequested(String target) {
+            String path = formPath(cmds, getCmd(), "already-requested");
+            return this.cfg.getString(path)
+                    .replace("%command%", zTPA.cfgu.CmdTpaCommand())
+                    .replace("%player%", target);
+        }
+
+        public String getRequestReceived(String sender) {
+            String path = formPath(cmds, getCmd(), "request-received");
+            return this.cfg.getString(path)
+                    .replace("%command%", zTPA.cfgu.CmdTpaCommand())
+                    .replace("%player%", sender)
+                    .replace("%time%", String.valueOf(zTPA.cfgu.tpaExpireTime()));
+        }
+    }
+
+    public static class Tpaccept implements Commands {
+        public YamlConfiguration cfg;
+
+        public Tpaccept() {
+            this.cfg = LanguageUtils.getConfigFile();
+        }
+
+        public String getCmd() {
+            return "tpaccept";
+        }
+
+        public String getUsage() {
+            return null;
+        }
+
+        public String getOutput() {
+            return null;
+        }
+
+        public String getOutput(String target) {
+            String path = formPath(cmds, getCmd(), "output");
+            return this.cfg.getString(path)
+                    .replace("%command%", zTPA.cfgu.CmdTpaCommand())
+                    .replace("%player%", target);
+        }
+
+        public String getNoRequest() {
+            String path = formPath(cmds, getCmd(), "no-request");
+            return this.cfg.getString(path)
+                    .replace("%command%", zTPA.cfgu.CmdTpaCommand());
+        }
+
+        public String getNoRequestFrom(String target) {
+            String path = formPath(cmds, getCmd(), "no-request-from");
+            return this.cfg.getString(path)
+                    .replace("%command%", zTPA.cfgu.CmdTpaCommand())
+                    .replace("%player%", target);
+        }
+    }
+
+    public static class Tpdeny implements Commands {
+        public YamlConfiguration cfg;
+
+        public Tpdeny() {
+            this.cfg = LanguageUtils.getConfigFile();
+        }
+
+        public String getCmd() {
+            return "tpdeny";
+        }
+
+        public String getUsage() {
+            return null;
+        }
+
+        public String getOutput() {
+            return null;
+        }
+
+        public String getOutput(String target) {
+            String path = formPath(cmds, getCmd(), "output");
+            return this.cfg.getString(path)
+                    .replace("%command%", zTPA.cfgu.CmdTpaCommand())
+                    .replace("%player%", target);
+        }
+
+        public String getNoRequest() {
+            String path = formPath(cmds, getCmd(), "no-request");
+            return this.cfg.getString(path)
+                    .replace("%command%", zTPA.cfgu.CmdTpaCommand());
+        }
+
+        public String getNoRequestFrom(String target) {
+            String path = formPath(cmds, getCmd(), "no-request-from");
+            return this.cfg.getString(path)
+                    .replace("%command%", zTPA.cfgu.CmdTpaCommand())
+                    .replace("%player%", target);
+        }
+    }
+
+    public static class Tpacancel implements Commands {
+        public YamlConfiguration cfg;
+
+        public Tpacancel() {
+            this.cfg = LanguageUtils.getConfigFile();
+        }
+
+        public String getCmd() {
+            return "tpacancel";
+        }
+
+        public String getUsage() {
+            return null;
+        }
+
+        public String getOutput() {
+            String path = formPath(cmds, getCmd(), "output");
+            return this.cfg.getString(path)
+                    .replace("%command%", zTPA.cfgu.CmdTpaCommand());
+        }
+
+        public String getOutputTo(String target) {
+            String path = formPath(cmds, getCmd(), "output-to");
+            return this.cfg.getString(path)
+                    .replace("%command%", zTPA.cfgu.CmdTpaCommand())
+                    .replace("%player%", target);
+        }
+
+        public String getNoRequest() {
+            String path = formPath(cmds, getCmd(), "no-request");
+            return this.cfg.getString(path)
+                    .replace("%command%", zTPA.cfgu.CmdTpaCommand());
+        }
+
+        public String getNoRequestTo(String target) {
+            String path = formPath(cmds, getCmd(), "no-request-to");
+            return this.cfg.getString(path)
+                    .replace("%command%", zTPA.cfgu.CmdTpaCommand())
+                    .replace("%player%", target);
+        }
+    }
+
     public static class MainCMD implements Commands {
         public YamlConfiguration cfg;
 
@@ -224,6 +396,36 @@ public class LanguageUtils extends ConfigUtils {
         }
     }
 
+    public static class TeleportWarmupMSG implements Helper {
+        public YamlConfiguration cfg;
+
+        public TeleportWarmupMSG() {
+            this.cfg = LanguageUtils.getConfigFile();
+        }
+
+        public String getWarmup(int time) {
+            String path = formPath(tpw, "warmup");
+            return this.cfg.getString(path)
+                    .replace("%time%", String.valueOf(time));
+        }
+
+        public String getWarmupActionbar(int time) {
+            String path = formPath(tpw, "warmup-actionbar");
+            return this.cfg.getString(path)
+                    .replace("%time%", String.valueOf(time));
+        }
+
+        public String getCancelled() {
+            String path = formPath(tpw, "cancelled");
+            return this.cfg.getString(path);
+        }
+
+        public String getCancelledActionbar() {
+            String path = formPath(tpw, "cancelled-actionbar");
+            return this.cfg.getString(path);
+        }
+    }
+
     public static class HooksMSG implements Helper {
         public YamlConfiguration cfg;
 
@@ -259,6 +461,16 @@ public class LanguageUtils extends ConfigUtils {
             String path = formPath(cmds, "cant-find-player");
             return this.cfg.getString(path);
         }
+
+        public String getOnlyExecutableByPlayers() {
+            String path = formPath(cmds, "only-executable-by-players");
+            return this.cfg.getString(path);
+        }
+
+        public String getMoreThanOneRequest() {
+            String path = formPath(cmds, "more-than-one-request");
+            return this.cfg.getString(path);
+        }
     }
 
     public static void loadzAPIMessages() {
@@ -276,6 +488,7 @@ public class LanguageUtils extends ConfigUtils {
 
     public interface Helper {
         default void sendMsg(Player p, String text) {
+            if(!p.isOnline()) return;
             if(text.isEmpty()) return;
             text = getText(p, text);
             p.sendMessage(text);
@@ -298,7 +511,11 @@ public class LanguageUtils extends ConfigUtils {
 
         static String getText(CommandSender s, String text) {
             text = transform(text
-                    .replace("%prefix%", zTPA.cfgu.prefix()));
+                    .replace("%prefix%", zTPA.cfgu.prefix())
+                    .replace("%command-tpa%", zTPA.cfgu.CmdTpaCommand())
+                    .replace("%command-tpaccept%", zTPA.cfgu.CmdTpacceptCommand())
+                    .replace("%command-tpdeny%", zTPA.cfgu.CmdTpdenyCommand())
+                    .replace("%command-tpacancel%", zTPA.cfgu.CmdTpacancelCommand()));
             if(s instanceof Player) {
                 Player p = (Player)s;
                 text = transform(p, text);

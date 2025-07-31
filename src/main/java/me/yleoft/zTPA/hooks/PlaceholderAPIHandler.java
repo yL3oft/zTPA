@@ -11,7 +11,7 @@ public class PlaceholderAPIHandler extends me.yleoft.zAPI.handlers.PlaceholderAP
 
         switch (split[0]) {
             case "version":
-                return (zTPA.getInstance()).pluginVer;
+                return zTPA.getInstance().pluginVer;
         }
         return "";
     }

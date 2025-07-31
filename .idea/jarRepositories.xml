@@ -12,6 +12,11 @@
       <option name="url" value="https://oss.sonatype.org/content/groups/public/" />
     </remote-repository>
     <remote-repository>
+      <option name="id" value="glaremasters.me" />
+      <option name="name" value="glaremasters.me" />
+      <option name="url" value="https://repo.glaremasters.me/repository/public/" />
+    </remote-repository>
+    <remote-repository>
       <option name="id" value="codemc-repo" />
       <option name="name" value="codemc-repo" />
       <option name="url" value="https://repo.codemc.io/repository/maven-public/" />
