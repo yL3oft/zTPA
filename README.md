@@ -37,7 +37,7 @@ If you want to support the project or have any questions, join our [Discord](htt
 ### Admin Commands
 - `/ztpa reload`
 
-### Home Commands
+### Tpa Commands
 - `/tpa (Player)`
 - `/tpaccept [Player]`
 - `/tpdeny [Player]`
