@@ -52,7 +52,7 @@ public class TpdenyCommand extends TpaUtils implements CommandExecutor {
 
         if(target == null) {
             if(requests.size() == 1) {
-                target = requests.getFirst().getSender();
+                target = requests.get(0).getSender();
             }else {
                 lang.sendMsg(p, cmdm.getMoreThanOneRequest());
                 return;
