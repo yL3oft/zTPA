@@ -4,11 +4,12 @@ import com.zTPA.api.event.player.AcceptTeleportRequestEvent;
 import com.zTPA.api.event.player.CancelTeleportRequestEvent;
 import com.zTPA.api.event.player.DenyTeleportRequestEvent;
 import com.zTPA.api.event.player.SendTeleportRequestEvent;
+import me.yleoft.zAPI.folia.FoliaRunnable;
+import me.yleoft.zAPI.utils.SchedulerUtils;
 import me.yleoft.zTPA.utils.LanguageUtils;
 import me.yleoft.zTPA.utils.TpaUtils;
 import me.yleoft.zTPA.zTPA;
 import org.bukkit.Bukkit;
-import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -45,7 +46,7 @@ public class TeleportRequest extends TpaUtils {
     protected Player sender;
     protected Player target;
     protected long requestTime;
-    protected BukkitRunnable runnable;
+    protected FoliaRunnable runnable;
 
     public TeleportRequest(Player sender, Player target) {
         SendTeleportRequestEvent event = new SendTeleportRequestEvent(sender, target);
@@ -140,7 +141,7 @@ public class TeleportRequest extends TpaUtils {
     }
 
     public void buildRunnable() {
-        runnable = new BukkitRunnable() {
+        runnable = new FoliaRunnable() {
             @Override
             public void run() {
                 if (isExpired()) {
@@ -148,7 +149,7 @@ public class TeleportRequest extends TpaUtils {
                 }
             }
         };
-        runnable.runTaskTimerAsynchronously(zTPA.getInstance(), 0L, 20L);
+        SchedulerUtils.runTaskTimerAsynchronously(runnable, 1L, 20L);
     }
 
 }

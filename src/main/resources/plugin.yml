@@ -10,6 +10,6 @@ softdepend:
   - WorldGuard
   - Vault
 # TODO: Add support for Folia
-folia-supported: false
+folia-supported: true
 commands: {}
 permissions: {}

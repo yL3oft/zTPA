@@ -155,7 +155,7 @@ public final class zTPA extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        if (!getServer().getName().contains("Folia")) {
+        if (!zAPI.isFolia()) {
             Bukkit.getScheduler().cancelTasks(this);
         }
         HandlerList.unregisterAll(this);

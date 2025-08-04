@@ -1,6 +1,8 @@
 package me.yleoft.zTPA.listeners;
 
+import me.yleoft.zAPI.folia.FoliaRunnable;
 import me.yleoft.zAPI.utils.ActionbarUtils;
+import me.yleoft.zAPI.utils.SchedulerUtils;
 import me.yleoft.zTPA.constructors.TeleportRequest;
 import me.yleoft.zTPA.utils.ConfigUtils;
 import me.yleoft.zTPA.utils.TpaUtils;
@@ -29,7 +31,7 @@ public class PlayerListeners extends ConfigUtils implements Listener {
         Player p = e.getPlayer();
         if(needsUpdate && doAnnounceUpdate() && (p.isOp() || p.hasPermission(CmdMainVersionUpdatePermission()))) {
             LanguageUtils.CommandsMSG cmdm = new LanguageUtils.CommandsMSG();
-            Bukkit.getScheduler().runTaskLater(zTPA.getInstance(), () -> {
+            SchedulerUtils.runTaskLater(p.getLocation(), () -> {
                 cmdm.sendMsg(p, "%prefix%&6You are using an outdated version of zHomes! Please update to the latest version.");
                 cmdm.sendMsg(p, "%prefix%&6New version: &a" + zTPA.getInstance().updateVersion);
                 cmdm.sendMsg(p, "%prefix%&6Your version: &c" + zTPA.getInstance().getDescription().getVersion());
@@ -69,7 +71,7 @@ public class PlayerListeners extends ConfigUtils implements Listener {
             if (from.getBlockX() != to.getBlockX()
                     || from.getBlockY() != to.getBlockY()
                     || from.getBlockZ() != to.getBlockZ()) {
-                BukkitRunnable runnable = TpaUtils.warmups.remove(uuid);
+                FoliaRunnable runnable = TpaUtils.warmups.remove(uuid);
                 if (runnable != null) {
                     runnable.cancel();
                     lang.sendMsg(p, lang.getCancelled());

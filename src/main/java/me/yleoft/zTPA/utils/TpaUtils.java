@@ -1,13 +1,15 @@
 package me.yleoft.zTPA.utils;
 
+import me.yleoft.zAPI.folia.FoliaRunnable;
 import me.yleoft.zAPI.utils.ActionbarUtils;
+import me.yleoft.zAPI.utils.SchedulerUtils;
+import me.yleoft.zAPI.zAPI;
 import me.yleoft.zTPA.constructors.TeleportRequest;
 import me.yleoft.zTPA.zTPA;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
-import org.bukkit.scheduler.BukkitRunnable;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -17,7 +19,7 @@ import java.util.UUID;
 
 public class TpaUtils extends ConfigUtils {
 
-    public static HashMap<UUID, BukkitRunnable> warmups = new HashMap<>();
+    public static HashMap<UUID, FoliaRunnable> warmups = new HashMap<>();
 
     public List<TeleportRequest> getRequests(UUID uuid) {
         return zTPA.tpaRequests.get(uuid);
@@ -31,20 +33,19 @@ public class TpaUtils extends ConfigUtils {
         LanguageUtils.Tpaccept lang = new LanguageUtils.Tpaccept();
         Runnable task = () -> {
             Sound sound = getTeleportSound();
-            if (zTPA.getInstance().getServer().getName().contains("Folia")) {
+            if (zAPI.isFolia()) {
                 try {
                     Method teleportAsyncMethod = Player.class.getMethod("teleportAsync", Location.class);
                     teleportAsyncMethod.invoke(p, t.getLocation());
-                    if (sound != null && playSound()) p.playSound(p.getLocation(), sound, 1.0F, 1.0F);
                 } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
                     throw new RuntimeException("Unable to teleport player to home", e);
                 }
-                return;
+            }else {
+                SchedulerUtils.runTaskLater(t.getLocation(), () -> {
+                    p.teleport(t.getLocation());
+                }, 1L);
             }
-            Bukkit.getScheduler().runTaskLater(zTPA.getInstance(), () -> {
-                p.teleport(t.getLocation());
-                if (sound != null && playSound()) p.playSound(p.getLocation(), sound, 1.0F, 1.0F);
-            }, 1L);
+            if (sound != null && playSound()) p.playSound(p.getLocation(), sound, 1.0F, 1.0F);
         };
         if(doWarmup() && !p.hasPermission(PermissionBypassWarmup()) && warmupTime() > 0) {
             LanguageUtils.TeleportWarmupMSG langWarmup = new LanguageUtils.TeleportWarmupMSG();
@@ -72,7 +73,7 @@ public class TpaUtils extends ConfigUtils {
             warmups.get(uuid).cancel();
         }
 
-        BukkitRunnable runnable = new BukkitRunnable() {
+        FoliaRunnable runnable = new FoliaRunnable() {
             int counter = warmupTime();
 
             @Override
@@ -97,7 +98,7 @@ public class TpaUtils extends ConfigUtils {
         };
 
         warmups.put(uuid, runnable);
-        runnable.runTaskTimer(zTPA.getInstance(), 0L, 20L);
+        SchedulerUtils.runTaskTimer(p.getLocation(), runnable, 1L, 20L);
     }
 
 }

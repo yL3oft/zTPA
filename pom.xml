@@ -6,7 +6,7 @@
 
     <groupId>me.yleoft</groupId>
     <artifactId>zTpa</artifactId>
-    <version>0.2.0-ALPHA</version>
+    <version>1.0.0</version>
     <description>Your new favorite tpa plugin</description>
     <url>https://github.com/yL3oft/zTPA</url>
     <packaging>jar</packaging>
@@ -224,7 +224,7 @@
         <dependency>
             <groupId>me.yleoft</groupId>
             <artifactId>zAPI</artifactId>
-            <version>1.4.1</version>
+            <version>1.4.2</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>
