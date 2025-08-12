@@ -1,7 +1,11 @@
 # Aqui você pode gerenciar mensagens de integração
 hooks:
   worldguard:
-    # TODO: Adicionar mensagens de integração com o WorldGuard
+    send-tpa-flag: "%prefix%&cVocê não pode enviar um pedido de teleporte aqui."
+    accept-tpa-flag: "%prefix%&cVocê não pode aceitar um pedido de teleporte aqui."
+    deny-tpa-flag: "%prefix%&cVocê não pode recusar um pedido de teleporte aqui."
+    cancel-tpa-flag: "%prefix%&cVocê não pode cancelar um pedido de teleporte aqui."
+    use-tpa-flag: "%prefix%&cVocê não pode usar o comando de teleporte aqui."
   vault:
     cant-afford-command: "%prefix%&cVocê precisa de &6$%cost% &cpara executar este comando."
 

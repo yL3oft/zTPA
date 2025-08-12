@@ -8,10 +8,8 @@ import me.yleoft.zAPI.folia.FoliaRunnable;
 import me.yleoft.zAPI.utils.SchedulerUtils;
 import me.yleoft.zTPA.utils.LanguageUtils;
 import me.yleoft.zTPA.utils.TpaUtils;
-import me.yleoft.zTPA.zTPA;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
-import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -100,7 +98,7 @@ public class TeleportRequest extends TpaUtils {
     }
 
     public void acceptRequest() {
-        AcceptTeleportRequestEvent event = new AcceptTeleportRequestEvent(sender, target);
+        AcceptTeleportRequestEvent event = new AcceptTeleportRequestEvent(target, sender);
         Bukkit.getPluginManager().callEvent(event);
         if (event.isCancelled()) return;
 
@@ -110,7 +108,7 @@ public class TeleportRequest extends TpaUtils {
     }
 
     public void denyRequest() {
-        DenyTeleportRequestEvent event = new DenyTeleportRequestEvent(sender, target);
+        DenyTeleportRequestEvent event = new DenyTeleportRequestEvent(target, sender);
         Bukkit.getPluginManager().callEvent(event);
         if (event.isCancelled()) return;
 

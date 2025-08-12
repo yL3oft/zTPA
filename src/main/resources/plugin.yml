@@ -9,7 +9,6 @@ softdepend:
   - PlaceholderAPI
   - WorldGuard
   - Vault
-# TODO: Add support for Folia
 folia-supported: true
 commands: {}
 permissions: {}

@@ -3,7 +3,6 @@ package me.yleoft.zTPA.utils;
 import me.yleoft.zAPI.utils.StringUtils;
 import me.yleoft.zTPA.zTPA;
 import net.milkbowl.vault.economy.Economy;
-import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 
 import java.util.List;

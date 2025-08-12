@@ -1,7 +1,11 @@
 # Here you can manage hook messages
 hooks:
   worldguard:
-    # TODO: Add messages for WorldGuard hooks
+    send-tpa-flag: "%prefix%&cYou can't send a teleport request here."
+    accept-tpa-flag: "%prefix%&cYou can't accept a teleport request here."
+    deny-tpa-flag: "%prefix%&cYou can't deny a teleport request here."
+    cancel-tpa-flag: "%prefix%&cYou can't cancel a teleport request here."
+    use-tpa-flag: "%prefix%&cYou can't use tpa here."
   vault:
     cant-afford-command: "%prefix%&cYou need &6$%cost% &cin order to execute this command."
 

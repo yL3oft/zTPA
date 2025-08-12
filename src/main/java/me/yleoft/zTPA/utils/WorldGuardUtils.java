@@ -7,11 +7,12 @@ import com.sk89q.worldguard.protection.ApplicableRegionSet;
 import com.sk89q.worldguard.protection.flags.StateFlag;
 import com.sk89q.worldguard.protection.regions.RegionContainer;
 import com.sk89q.worldguard.protection.regions.RegionQuery;
+import me.yleoft.zTPA.hooks.WorldGuardHook;
 import org.bukkit.entity.Player;
 
 import static me.yleoft.zTPA.zTPA.useWorldGuard;
 
-public abstract class WorldGuardUtils {
+public abstract class WorldGuardUtils extends WorldGuardHook {
 
     public static boolean getFlagStateAtPlayer(Player p, StateFlag flag) {
         if(!useWorldGuard) return true;

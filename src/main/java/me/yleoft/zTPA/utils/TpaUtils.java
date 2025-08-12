@@ -6,7 +6,6 @@ import me.yleoft.zAPI.utils.SchedulerUtils;
 import me.yleoft.zAPI.zAPI;
 import me.yleoft.zTPA.constructors.TeleportRequest;
 import me.yleoft.zTPA.zTPA;
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;

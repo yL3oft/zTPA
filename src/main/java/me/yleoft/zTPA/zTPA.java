@@ -1,5 +1,6 @@
 package me.yleoft.zTPA;
 
+import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
 import com.sk89q.worldguard.protection.flags.StateFlag;
 import me.yleoft.zAPI.Metrics;
 import me.yleoft.zAPI.managers.FileManager;
@@ -7,8 +8,8 @@ import me.yleoft.zAPI.managers.UpdateManager;
 import me.yleoft.zAPI.utils.FileUtils;
 import me.yleoft.zAPI.zAPI;
 import me.yleoft.zTPA.commands.*;
-import me.yleoft.zTPA.constructors.TeleportRequest;
-import me.yleoft.zTPA.hooks.PlaceholderAPIHandler;
+import me.yleoft.zTPA.constructors.*;
+import me.yleoft.zTPA.hooks.*;
 import me.yleoft.zTPA.listeners.*;
 import me.yleoft.zTPA.tabcompleters.*;
 import me.yleoft.zTPA.utils.*;
@@ -18,6 +19,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.event.HandlerList;
 import org.bukkit.permissions.PermissionDefault;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
@@ -36,12 +38,11 @@ import static me.yleoft.zTPA.utils.LanguageUtils.loadzAPIMessages;
 public final class zTPA extends JavaPlugin {
 
     public static FileUtils configFileUtils;
-    public static StateFlag sendTeleportRequestFlag;
-    public static StateFlag acceptTeleportRequestFlag;
-    public static StateFlag denyTeleportRequestFlag;
-    public static StateFlag cancelTeleportRequestFlag;
-    public static StateFlag bypassTpaWarmupFlag;
-    public static StateFlag bypassTpaCostFlag;
+    public static StateFlag sendTPAFlag;
+    public static StateFlag acceptTPAFlag;
+    public static StateFlag denyTPAFlag;
+    public static StateFlag cancelTPAFlag;
+    public static StateFlag useTPAFlag;
 
     public static boolean usePlaceholderAPI = false;
     public static boolean useWorldGuard = false;
@@ -72,7 +73,20 @@ public final class zTPA extends JavaPlugin {
     @Override
     public void onLoad() {
         //<editor-fold desc="WorldGuard Hook">
-        // TODO Add worldguard flags
+        try {
+            Plugin wg = getServer().getPluginManager().getPlugin("WorldGuard");
+            if (wg instanceof WorldGuardPlugin) {
+                useWorldGuard = true;
+                try {
+                    WorldGuardHook.setupFlags();
+                } catch (Exception e) {
+                    getLogger().severe("Failed to hook into WorldGuard properly.");
+                    e.printStackTrace();
+                }
+            }
+        } catch (Exception e) {
+            Bukkit.getLogger().log(Level.SEVERE, "Error hooking into WorldGuard");
+        }
         //</editor-fold>
     }
 
@@ -252,6 +266,9 @@ public final class zTPA extends JavaPlugin {
         //</editor-fold>
         //<editor-fold desc="Listeners">
         registerEvent(new PlayerListeners());
+        if(useWorldGuard) {
+            registerEvent(new WorldGuardListeners());
+        }
         //</editor-fold>
     }
     private boolean setupEconomy() {

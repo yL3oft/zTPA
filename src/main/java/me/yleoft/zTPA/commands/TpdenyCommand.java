@@ -1,6 +1,5 @@
 package me.yleoft.zTPA.commands;
 
-import com.zTPA.api.event.player.DenyTeleportRequestEvent;
 import me.yleoft.zTPA.constructors.TeleportRequest;
 import me.yleoft.zTPA.utils.LanguageUtils;
 import me.yleoft.zTPA.utils.TpaUtils;

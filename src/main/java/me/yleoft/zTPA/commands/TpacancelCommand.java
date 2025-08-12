@@ -13,6 +13,9 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+import static me.yleoft.zTPA.utils.WorldGuardUtils.getFlagStateAtPlayer;
+import static me.yleoft.zTPA.zTPA.*;
+
 public class TpacancelCommand extends TpaUtils implements CommandExecutor {
 
     public boolean onCommand(@NotNull CommandSender s, @NotNull Command cmd, @NotNull String label, String[] args) {
@@ -44,6 +47,15 @@ public class TpacancelCommand extends TpaUtils implements CommandExecutor {
     }
 
     public void code(Player p, Player target, LanguageUtils.Tpacancel lang, LanguageUtils.CommandsMSG cmdm) {
+        LanguageUtils.HooksMSG hooks = new LanguageUtils.HooksMSG();
+        if (!getFlagStateAtPlayer(p, cancelTPAFlag)) {
+            hooks.sendMsg(p, hooks.getWorldGuardCancelTpa());
+            return;
+        }else if (!getFlagStateAtPlayer(p, useTPAFlag)) {
+            hooks.sendMsg(p, hooks.getWorldGuardUseTpa());
+            return;
+        }
+
         List<TeleportRequest> requests = getRequests(p.getUniqueId());
         if (requests == null || requests.isEmpty()) {
             lang.sendMsg(p, lang.getNoRequest());

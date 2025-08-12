@@ -5,7 +5,6 @@ import me.yleoft.zAPI.mutable.Messages;
 import me.yleoft.zAPI.utils.FileUtils;
 import me.yleoft.zTPA.zTPA;
 import org.bukkit.Bukkit;
-import org.bukkit.OfflinePlayer;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
@@ -433,8 +432,28 @@ public class LanguageUtils extends ConfigUtils {
             this.cfg = LanguageUtils.getConfigFile();
         }
 
-        public String getWorldGuardCantUseHomes() {
-            String path = formPath(hooks, worldguard, "cant-use-homes");
+        public String getWorldGuardSendTpa() {
+            String path = formPath(hooks, worldguard, "send-tpa-flag");
+            return this.cfg.getString(path);
+        }
+
+        public String getWorldGuardAcceptTpa() {
+            String path = formPath(hooks, worldguard, "accept-tpa-flag");
+            return this.cfg.getString(path);
+        }
+
+        public String getWorldGuardDenyTpa() {
+            String path = formPath(hooks, worldguard, "deny-tpa-flag");
+            return this.cfg.getString(path);
+        }
+
+        public String getWorldGuardCancelTpa() {
+            String path = formPath(hooks, worldguard, "cancel-tpa-flag");
+            return this.cfg.getString(path);
+        }
+
+        public String getWorldGuardUseTpa() {
+            String path = formPath(hooks, worldguard, "use-tpa-flag");
             return this.cfg.getString(path);
         }
 

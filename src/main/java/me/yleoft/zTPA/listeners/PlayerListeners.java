@@ -8,7 +8,6 @@ import me.yleoft.zTPA.utils.ConfigUtils;
 import me.yleoft.zTPA.utils.TpaUtils;
 import me.yleoft.zTPA.zTPA;
 import me.yleoft.zTPA.utils.LanguageUtils;
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -17,7 +16,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
-import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.List;
 import java.util.UUID;
