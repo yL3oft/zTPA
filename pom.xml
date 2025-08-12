@@ -30,6 +30,9 @@
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
+                    <excludes>
+                        <exclude>com/zTPA/api/examples/*</exclude>
+                    </excludes>
                 </configuration>
             </plugin>
             <plugin>
