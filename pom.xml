@@ -6,7 +6,7 @@
 
     <groupId>me.yleoft</groupId>
     <artifactId>zTPA</artifactId>
-    <version>1.0.3-SNAPSHOT</version>
+    <version>1.0.3</version>
     <description>Your new favorite tpa plugin</description>
     <url>https://github.com/yL3oft/zTPA</url>
 
