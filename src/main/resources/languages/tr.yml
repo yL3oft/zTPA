@@ -1,0 +1,86 @@
+# Burada kanca mesajlarını yönetebilirsiniz
+hooks:
+  worldguard:
+    send-tpa-flag: "%prefix%&cBurada teleport isteği gönderemezsin."
+    accept-tpa-flag: "%prefix%&cBurada teleport isteğini kabul edemezsin."
+    deny-tpa-flag: "%prefix%&cBurada teleport isteğini reddedemezsin."
+    cancel-tpa-flag: "%prefix%&cBurada teleport isteğini iptal edemezsin."
+    use-tpa-flag: "%prefix%&cBurada tpa kullanamazsın."
+  vault:
+    cant-afford-command: "%prefix%&cBu komutu çalıştırmak için &6$%cost% &cgerekli."
+
+# Teleport bekleme süresi ile ilgili mesajlar
+teleport-warmup:
+  warmup: "%prefix%&a%time% saniye içinde teleport olunuyor... Hareket etme!"
+  warmup-actionbar: "&a%time% saniye içinde teleport olunuyor..."
+  cancelled: "%prefix%&cHareket ettin! Teleport iptal edildi."
+  cancelled-actionbar: "&cHareket ettin! Teleport iptal edildi."
+
+# Komutlarla ilgili mesajlar
+commands:
+  # Birden fazla komutta kullanılabilen mesajlar
+  no-permission: "%prefix%&cBu komutu çalıştırmaya iznin yok."
+  in-cooldown: "%prefix%&cBu komutu tekrar kullanmadan önce %timeleft% saniye beklemelisin."
+  cant-find-player: "%prefix%&cBu oyuncu bulunamadı."
+  only-executable-by-players: "%prefix%&cBu komut yalnızca oyuncular tarafından kullanılabilir."
+  more-than-one-request: "%prefix%&cBirden fazla teleport isteğin var, lütfen kabul/ret edeceğin oyuncuyu belirt."
+
+  # Komutlara özel mesajlar
+  main:
+    help:
+      help-perm: |-
+        %prefix%&b &e/%command%&b komutunun kullanımları:
+        &c-> &e/%command% &a(help|?)
+        &c-> &e/%command% &a(reload|rl) &6[all, commands, config, languages]
+        &c-> &e/%command% &a(version|ver) &6[update]
+      help-noperm: |-
+        %prefix%&b &e/%command%&b komutunun kullanımları:
+        &c-> &e/%command% &a(help|?)
+        &c-> &e/%command% &a(version|ver)
+    version:
+      output: "%prefix%&bMevcut sürüm: &a%version%"
+      update:
+        output: "%prefix%&azTPA en son sürüme güncellendi &e(%update%)&a, değişikliklerin uygulanması için lütfen sunucunuzu yeniden başlatın."
+        no-update: "%prefix%&aZaten zTPA’nin en son sürümünü kullanıyorsunuz."
+    reload:
+      usage: |-
+        %prefix%&b &e/%command% &a(reload|rl)&b komutunun kullanımları:
+        &c-> &e/%command% &a(reload|rl) &6[all, commands, config, languages]
+      output: "%prefix%&aPlugin &b%time%ms&a içinde yeniden yüklendi."
+      commands:
+        output: "%prefix%&aTüm plugin komutları &b%time%ms&a içinde yeniden yüklendi."
+      config:
+        output: "%prefix%&aPlugin yapılandırma dosyası &b%time%ms&a içinde yeniden yüklendi."
+      languages:
+        output: |-
+          %prefix%&aPlugin dilleri &b%time%ms&a içinde yeniden yüklendi.
+          &7Not: Bu config.yml'deki dili güncellemez, bunun için '/%command% reload config' kullanın.
+  tpa:
+    usage: "%prefix% &c-> &e/%command% (Oyuncu)"
+    yourself: "%prefix%&cKendine teleport isteği gönderemezsin."
+    already-requested: "%prefix%&cZaten &e%player%&c oyuncusuna teleport isteği gönderdin."
+    output: |-
+      &a
+      &aTeleport isteği &e%player%&a oyuncusuna gönderildi
+      &aİptal etmek için &e/%command-tpacancel% &akullan
+      &a
+    request-received: |-
+      &a
+      &a&e%player%&a adlı oyuncudan teleport isteği aldın
+      &aKabul etmek için &e/%command-tpaccept% &akullan
+      &aReddetmek için &e/%command-tpdeny% &akullan
+      &aBu istek &c%time% saniye &a içinde sona erecek
+      &a
+  tpaccept:
+    output: "%prefix%&a&e%player%&a oyuncusundan gelen teleport isteği kabul edildi."
+    no-request: "%prefix%&cKabul edilecek teleport isteğin yok."
+    no-request-from: "%prefix%&c&e%player%&c adlı oyuncudan kabul edilecek teleport isteğin yok."
+  tpdeny:
+    output: "%prefix%&a&e%player%&a oyuncusundan gelen teleport isteği reddedildi."
+    no-request: "%prefix%&cReddedilecek teleport isteğin yok."
+    no-request-from: "%prefix%&c&e%player%&c adlı oyuncudan reddedilecek teleport isteğin yok."
+  tpacancel:
+    output: "%prefix%&aTüm teleport isteklerin iptal edildi."
+    output-to: "%prefix%&a&e%player%&a oyuncusuna gönderilen teleport isteği iptal edildi."
+    no-request: "%prefix%&cİptal edilecek teleport isteğin yok."
+    no-request-to: "%prefix%&c&e%player%&c adlı oyuncuya gönderilmiş teleport isteğin yok."

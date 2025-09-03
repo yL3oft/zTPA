@@ -18,7 +18,7 @@ public abstract class WorldGuardUtils extends WorldGuardHook {
         if(!useWorldGuard) return true;
         LocalPlayer localPlayer = WorldGuardPlugin.inst().wrapPlayer(p);
         boolean canBypass = WorldGuard.getInstance().getPlatform().getSessionManager().hasBypass(localPlayer, localPlayer.getWorld());
-        if(canBypass) return true;
+        if (canBypass) return true;
         RegionContainer container = WorldGuard.getInstance().getPlatform().getRegionContainer();
         RegionQuery query = container.createQuery();
         ApplicableRegionSet set = query.getApplicableRegions(localPlayer.getLocation());

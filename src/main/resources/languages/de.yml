@@ -1,0 +1,86 @@
+# Hier können Sie Hook-Nachrichten verwalten
+hooks:
+  worldguard:
+    send-tpa-flag: "%prefix%&cDu kannst hier keine Teleportanfrage senden."
+    accept-tpa-flag: "%prefix%&cDu kannst hier keine Teleportanfrage annehmen."
+    deny-tpa-flag: "%prefix%&cDu kannst hier keine Teleportanfrage ablehnen."
+    cancel-tpa-flag: "%prefix%&cDu kannst hier keine Teleportanfrage abbrechen."
+    use-tpa-flag: "%prefix%&cDu kannst hier kein TPA verwenden."
+  vault:
+    cant-afford-command: "%prefix%&cDu benötigst &6$%cost% &cum diesen Befehl auszuführen."
+
+# Nachrichten im Zusammenhang mit Teleport-Warmup
+teleport-warmup:
+  warmup: "%prefix%&aTeleport in %time% Sekunden... Nicht bewegen!"
+  warmup-actionbar: "&aTeleport in %time% Sekunden..."
+  cancelled: "%prefix%&cDu hast dich bewegt! Teleportation abgebrochen."
+  cancelled-actionbar: "&cDu hast dich bewegt! Teleportation abgebrochen."
+
+# Nachrichten im Zusammenhang mit Befehlen
+commands:
+  # Allgemeine Nachrichten, die in mehreren Befehlen verwendet werden können
+  no-permission: "%prefix%&cDu hast keine Berechtigung, diesen Befehl auszuführen."
+  in-cooldown: "%prefix%&cDu musst %timeleft% Sekunden warten, bevor du diesen Befehl erneut verwenden kannst."
+  cant-find-player: "%prefix%&cDieser Spieler wurde nicht gefunden."
+  only-executable-by-players: "%prefix%&cDieser Befehl kann nur von Spielern ausgeführt werden."
+  more-than-one-request: "%prefix%&cDu hast mehr als eine Teleportanfrage, bitte gib den Spieler an, dessen Anfrage du annehmen/ablehnen möchtest."
+
+  # Spezifische Nachrichten für die Befehle
+  main:
+    help:
+      help-perm: |-
+        %prefix%&bVerwendungen von &e/%command%&b:
+        &c-> &e/%command% &a(help|?)
+        &c-> &e/%command% &a(reload|rl) &6[all, commands, config, languages]
+        &c-> &e/%command% &a(version|ver) &6[update]
+      help-noperm: |-
+        %prefix%&bVerwendungen von &e/%command%&b:
+        &c-> &e/%command% &a(help|?)
+        &c-> &e/%command% &a(version|ver)
+    version:
+      output: "%prefix%&bAktuelle Version: &a%version%"
+      update:
+        output: "%prefix%&azTPA wurde auf die neueste Version &e(%update%)&a aktualisiert. Bitte starte deinen Server neu, um die Änderungen anzuwenden."
+        no-update: "%prefix%&aDu verwendest bereits die neueste Version von zTPA."
+    reload:
+      usage: |-
+        %prefix%&bVerwendungen von &e/%command% &a(reload|rl)&b:
+        &c-> &e/%command% &a(reload|rl) &6[all, commands, config, languages]
+      output: "%prefix%&aPlugin in &b%time%ms&a neu geladen."
+      commands:
+        output: "%prefix%&aAlle Plugin-Befehle in &b%time%ms&a neu geladen."
+      config:
+        output: "%prefix%&aPlugin-Konfigurationsdatei in &b%time%ms&a neu geladen."
+      languages:
+        output: |-
+          %prefix%&aPlugin-Sprachen in &b%time%ms&a neu geladen.
+          &7Hinweis: Dies aktualisiert nicht die Sprache aus der config.yml, verwende '/%command% reload config', um das zu tun.
+  tpa:
+    usage: "%prefix% &c-> &e/%command% (Spieler)"
+    yourself: "%prefix%&cDu kannst dir selbst keine Teleportanfrage senden."
+    already-requested: "%prefix%&cDu hast bereits eine Teleportanfrage an &e%player%&c gesendet."
+    output: |-
+      &a
+      &aTeleportanfrage an &e%player% &agesendet
+      &aZum Abbrechen verwende &e/%command-tpacancel%
+      &a
+    request-received: |-
+      &a
+      &aDu hast eine Teleportanfrage von &e%player% &aerhalten
+      &aZum Annehmen verwende &e/%command-tpaccept%
+      &aZum Ablehnen verwende &e/%command-tpdeny%
+      &aDiese Anfrage läuft in &c%time% Sekunden ab
+      &a
+  tpaccept:
+    output: "%prefix%&aTeleportanfrage von &e%player%&a akzeptiert."
+    no-request: "%prefix%&cDu hast keine Teleportanfrage zum Annehmen."
+    no-request-from: "%prefix%&cDu hast keine Teleportanfrage von &e%player%&c."
+  tpdeny:
+    output: "%prefix%&aTeleportanfrage von &e%player%&a abgelehnt."
+    no-request: "%prefix%&cDu hast keine Teleportanfrage zum Ablehnen."
+    no-request-from: "%prefix%&cDu hast keine Teleportanfrage von &e%player%&c."
+  tpacancel:
+    output: "%prefix%&aAlle deine Teleportanfragen wurden abgebrochen."
+    output-to: "%prefix%&aTeleportanfrage an &e%player%&a abgebrochen."
+    no-request: "%prefix%&cDu hast keine Teleportanfrage zum Abbrechen."
+    no-request-to: "%prefix%&cDu hast keine Teleportanfrage an &e%player%&c."

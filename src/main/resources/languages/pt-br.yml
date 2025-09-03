@@ -40,8 +40,8 @@ commands:
     version:
       output: "%prefix%&bVersão atual: &a%version%"
       update:
-        output: "%prefix%&azAPI foi atualizado para a versão mais recente &e(%update%)&a, reinicie o servidor para aplicar as alterações."
-        no-update: "%prefix%&aVocê já está usando a versão mais recente do zAPI."
+        output: "%prefix%&azTPA foi atualizado para a versão mais recente &e(%update%)&a, reinicie o servidor para aplicar as alterações."
+        no-update: "%prefix%&aVocê já está usando a versão mais recente de zTPA."
     reload:
       usage: |-
         %prefix%&bUsos de &e/%command% &a(reload|rl)&b:

@@ -1,0 +1,81 @@
+hooks:
+  worldguard:
+    send-tpa-flag: "%prefix%&cJe kunt hier geen teleportatieverzoek sturen."
+    accept-tpa-flag: "%prefix%&cJe kunt hier geen teleportatieverzoek accepteren."
+    deny-tpa-flag: "%prefix%&cJe kunt hier geen teleportatieverzoek weigeren."
+    cancel-tpa-flag: "%prefix%&cJe kunt hier geen teleportatieverzoek annuleren."
+    use-tpa-flag: "%prefix%&cJe kunt hier geen tpa gebruiken."
+  vault:
+    cant-afford-command: "%prefix%&cJe hebt &6$%cost% &cnodig om dit commando te gebruiken."
+
+teleport-warmup:
+  warmup: "%prefix%&aTeleportatie start over %time% seconden... Beweeg niet!"
+  warmup-actionbar: "&aTeleportatie start over %time% seconden..."
+  cancelled: "%prefix%&cJe bewoog! Teleportatie geannuleerd."
+  cancelled-actionbar: "&cJe bewoog! Teleportatie geannuleerd."
+
+commands:
+  no-permission: "%prefix%&cJe hebt geen toestemming voor dit commando."
+  in-cooldown: "%prefix%&cJe moet %timeleft% seconden wachten voordat je dit commando opnieuw kunt gebruiken."
+  cant-find-player: "%prefix%&cDie speler is niet gevonden."
+  only-executable-by-players: "%prefix%&cDit commando kan alleen door spelers uitgevoerd worden."
+  more-than-one-request: "%prefix%&cJe hebt meerdere teleportatieverzoeken, specificeer een speler."
+
+  main:
+    help:
+      help-perm: |-
+        %prefix%&bGebruik van &e/%command%&b:
+        &c-> &e/%command% &a(help|?)
+        &c-> &e/%command% &a(reload|rl) &6[all, commands, config, languages]
+        &c-> &e/%command% &a(version|ver) &6[update]
+      help-noperm: |-
+        %prefix%&bGebruik van &e/%command%&b:
+        &c-> &e/%command% &a(help|?)
+        &c-> &e/%command% &a(version|ver)
+    version:
+      output: "%prefix%&bHuidige versie: &a%version%"
+      update:
+        output: "%prefix%&azTPA bijgewerkt naar de laatste versie &e(%update%)&a, herstart de server om dit toe te passen."
+        no-update: "%prefix%&aJe gebruikt al de laatste versie van zTPA."
+    reload:
+      usage: |-
+        %prefix%&bGebruik van &e/%command% &a(reload|rl)&b:
+        &c-> &e/%command% &a(reload|rl) &6[all, commands, config, languages]
+      output: "%prefix%&aPlugin herladen in &b%time%ms&a."
+      commands:
+        output: "%prefix%&aAlle plugincommando’s herladen in &b%time%ms&a."
+      config:
+        output: "%prefix%&aConfiguratiebestand herladen in &b%time%ms&a."
+      languages:
+        output: |-
+          %prefix%&aPlugin-talen herladen in &b%time%ms&a.
+          &7Opmerking: Dit werkt niet voor de taal uit config.yml, gebruik '/%command% reload config' om dat bij te werken.
+  tpa:
+    usage: "%prefix% &c-> &e/%command% (Speler)"
+    yourself: "%prefix%&cJe kunt geen teleportatieverzoek naar jezelf sturen."
+    already-requested: "%prefix%&cJe hebt al een teleportatieverzoek naar &e%player%&c gestuurd."
+    output: |-
+      &a
+      &aTeleportatieverzoek gestuurd naar &e%player%
+      &aOm te annuleren, gebruik &e/%command-tpacancel%
+      &a
+    request-received: |-
+      &a
+      &aJe hebt een teleportatieverzoek ontvangen van &e%player%
+      &aOm te accepteren, gebruik &e/%command-tpaccept%
+      &aOm te weigeren, gebruik &e/%command-tpdeny%
+      &aDit verzoek verloopt over &c%time% seconden
+      &a
+  tpaccept:
+    output: "%prefix%&aTeleportatieverzoek van &e%player%&a geaccepteerd."
+    no-request: "%prefix%&cJe hebt geen teleportatieverzoeken om te accepteren."
+    no-request-from: "%prefix%&cJe hebt geen teleportatieverzoeken van &e%player%&c."
+  tpdeny:
+    output: "%prefix%&aTeleportatieverzoek van &e%player%&a geweigerd."
+    no-request: "%prefix%&cJe hebt geen teleportatieverzoeken om te weigeren."
+    no-request-from: "%prefix%&cJe hebt geen teleportatieverzoeken van &e%player%&c."
+  tpacancel:
+    output: "%prefix%&aAl je teleportatieverzoeken zijn geannuleerd."
+    output-to: "%prefix%&aTeleportatieverzoek naar &e%player%&a geannuleerd."
+    no-request: "%prefix%&cJe hebt geen teleportatieverzoeken om te annuleren."
+    no-request-to: "%prefix%&cJe hebt geen teleportatieverzoeken naar &e%player%&c."

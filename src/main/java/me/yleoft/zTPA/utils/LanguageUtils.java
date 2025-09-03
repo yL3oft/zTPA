@@ -38,8 +38,17 @@ public class LanguageUtils extends ConfigUtils {
 
     public static YamlConfiguration getConfigFile() {
         List<FileUtils> list = new ArrayList<>();
+        list.add(FileManager.getFileUtil("languages/de.yml"));
         list.add(FileManager.getFileUtil("languages/en.yml"));
+        list.add(FileManager.getFileUtil("languages/es.yml"));
+        list.add(FileManager.getFileUtil("languages/fr.yml"));
+        list.add(FileManager.getFileUtil("languages/it.yml"));
+        list.add(FileManager.getFileUtil("languages/nl.yml"));
+        list.add(FileManager.getFileUtil("languages/pl.yml"));
         list.add(FileManager.getFileUtil("languages/pt-br.yml"));
+        list.add(FileManager.getFileUtil("languages/ru.yml"));
+        list.add(FileManager.getFileUtil("languages/tr.yml"));
+        list.add(FileManager.getFileUtil("languages/zhcn.yml"));
         list.add(fuBACKUP);
         boolean found = false;
         YamlConfiguration returned = cfg;

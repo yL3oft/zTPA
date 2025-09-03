@@ -48,10 +48,10 @@ public class TpacancelCommand extends TpaUtils implements CommandExecutor {
 
     public void code(Player p, Player target, LanguageUtils.Tpacancel lang, LanguageUtils.CommandsMSG cmdm) {
         LanguageUtils.HooksMSG hooks = new LanguageUtils.HooksMSG();
-        if (!getFlagStateAtPlayer(p, cancelTPAFlag)) {
+        if (useWorldGuard && !getFlagStateAtPlayer(p, cancelTPAFlag)) {
             hooks.sendMsg(p, hooks.getWorldGuardCancelTpa());
             return;
-        }else if (!getFlagStateAtPlayer(p, useTPAFlag)) {
+        }else if (useWorldGuard && !getFlagStateAtPlayer(p, useTPAFlag)) {
             hooks.sendMsg(p, hooks.getWorldGuardUseTpa());
             return;
         }

@@ -1,0 +1,86 @@
+# 在这里管理挂钩消息
+hooks:
+  worldguard:
+    send-tpa-flag: "%prefix%&c你不能在这里发送传送请求。"
+    accept-tpa-flag: "%prefix%&c你不能在这里接受传送请求。"
+    deny-tpa-flag: "%prefix%&c你不能在这里拒绝传送请求。"
+    cancel-tpa-flag: "%prefix%&c你不能在这里取消传送请求。"
+    use-tpa-flag: "%prefix%&c你不能在这里使用 tpa。"
+  vault:
+    cant-afford-command: "%prefix%&c执行此命令需要 &6$%cost%&c。"
+
+# 与传送预热相关的消息
+teleport-warmup:
+  warmup: "%prefix%&a%time% 秒后传送... 不要移动！"
+  warmup-actionbar: "&a%time% 秒后传送..."
+  cancelled: "%prefix%&c你移动了！传送已取消。"
+  cancelled-actionbar: "&c你移动了！传送已取消。"
+
+# 与命令相关的消息
+commands:
+  # 可在多个命令中使用的消息
+  no-permission: "%prefix%&c你没有权限执行此命令。"
+  in-cooldown: "%prefix%&c你必须等待 %timeleft% 秒后才能再次使用此命令。"
+  cant-find-player: "%prefix%&c未找到该玩家。"
+  only-executable-by-players: "%prefix%&c此命令只能由玩家执行。"
+  more-than-one-request: "%prefix%&c你有多个传送请求，请指定要接受/拒绝的玩家。"
+
+  # 特定命令的消息
+  main:
+    help:
+      help-perm: |-
+        %prefix%&b &e/%command%&b 的用法：
+        &c-> &e/%command% &a(help|?)
+        &c-> &e/%command% &a(reload|rl) &6[all, commands, config, languages]
+        &c-> &e/%command% &a(version|ver) &6[update]
+      help-noperm: |-
+        %prefix%&b &e/%command%&b 的用法：
+        &c-> &e/%command% &a(help|?)
+        &c-> &e/%command% &a(version|ver)
+    version:
+      output: "%prefix%&b当前版本: &a%version%"
+      update:
+        output: "%prefix%&azTPA 已更新至最新版本 &e(%update%)&a，请重启服务器以应用更改。"
+        no-update: "%prefix%&a你已经在使用最新版本的 zTPA。"
+    reload:
+      usage: |-
+        %prefix%&b &e/%command% &a(reload|rl)&b 的用法：
+        &c-> &e/%command% &a(reload|rl) &6[all, commands, config, languages]
+      output: "%prefix%&a插件已在 &b%time%ms&a 内重新加载。"
+      commands:
+        output: "%prefix%&a所有插件命令已在 &b%time%ms&a 内重新加载。"
+      config:
+        output: "%prefix%&a插件配置文件已在 &b%time%ms&a 内重新加载。"
+      languages:
+        output: |-
+          %prefix%&a插件语言已在 &b%time%ms&a 内重新加载。
+          &7注意: 这不会更新 config.yml 中的语言，请使用 '/%command% reload config' 来更新。
+  tpa:
+    usage: "%prefix% &c-> &e/%command% (玩家)"
+    yourself: "%prefix%&c你不能向自己发送传送请求。"
+    already-requested: "%prefix%&c你已经向 &e%player%&c 发送了传送请求。"
+    output: |-
+      &a
+      &a已向 &e%player%&a 发送传送请求
+      &a取消请使用 &e/%command-tpacancel%
+      &a
+    request-received: |-
+      &a
+      &a你收到了来自 &e%player%&a 的传送请求
+      &a接受请使用 &e/%command-tpaccept%
+      &a拒绝请使用 &e/%command-tpdeny%
+      &a该请求将在 &c%time% 秒&a 后过期
+      &a
+  tpaccept:
+    output: "%prefix%&a已接受来自 &e%player%&a 的传送请求。"
+    no-request: "%prefix%&c你没有可以接受的传送请求。"
+    no-request-from: "%prefix%&c你没有来自 &e%player%&c 的传送请求。"
+  tpdeny:
+    output: "%prefix%&a已拒绝来自 &e%player%&a 的传送请求。"
+    no-request: "%prefix%&c你没有可以拒绝的传送请求。"
+    no-request-from: "%prefix%&c你没有来自 &e%player%&c 的传送请求。"
+  tpacancel:
+    output: "%prefix%&a你所有的传送请求已被取消。"
+    output-to: "%prefix%&a发送给 &e%player%&a 的传送请求已取消。"
+    no-request: "%prefix%&c你没有可以取消的传送请求。"
+    no-request-to: "%prefix%&c你没有发送给 &e%player%&c 的传送请求。"

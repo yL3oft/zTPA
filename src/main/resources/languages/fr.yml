@@ -1,0 +1,82 @@
+# Ici, vous pouvez gérer les messages des hooks
+hooks:
+  worldguard:
+    send-tpa-flag: "%prefix%&cVous ne pouvez pas envoyer de demande de téléportation ici."
+    accept-tpa-flag: "%prefix%&cVous ne pouvez pas accepter de demande de téléportation ici."
+    deny-tpa-flag: "%prefix%&cVous ne pouvez pas refuser de demande de téléportation ici."
+    cancel-tpa-flag: "%prefix%&cVous ne pouvez pas annuler de demande de téléportation ici."
+    use-tpa-flag: "%prefix%&cVous ne pouvez pas utiliser tpa ici."
+  vault:
+    cant-afford-command: "%prefix%&cVous avez besoin de &6$%cost% &cpour exécuter cette commande."
+
+teleport-warmup:
+  warmup: "%prefix%&aTéléportation dans %time% secondes... Ne bougez pas !"
+  warmup-actionbar: "&aTéléportation dans %time% secondes..."
+  cancelled: "%prefix%&cVous avez bougé ! Téléportation annulée."
+  cancelled-actionbar: "&cVous avez bougé ! Téléportation annulée."
+
+commands:
+  no-permission: "%prefix%&cVous n’avez pas la permission d’exécuter cette commande."
+  in-cooldown: "%prefix%&cVous devez attendre %timeleft% secondes avant de réutiliser cette commande."
+  cant-find-player: "%prefix%&cCe joueur est introuvable."
+  only-executable-by-players: "%prefix%&cCette commande ne peut être exécutée que par des joueurs."
+  more-than-one-request: "%prefix%&cVous avez plusieurs demandes de téléportation, veuillez préciser le joueur."
+
+  main:
+    help:
+      help-perm: |-
+        %prefix%&bUtilisations de &e/%command%&b:
+        &c-> &e/%command% &a(help|?)
+        &c-> &e/%command% &a(reload|rl) &6[all, commands, config, languages]
+        &c-> &e/%command% &a(version|ver) &6[update]
+      help-noperm: |-
+        %prefix%&bUtilisations de &e/%command%&b:
+        &c-> &e/%command% &a(help|?)
+        &c-> &e/%command% &a(version|ver)
+    version:
+      output: "%prefix%&bVersion actuelle : &a%version%"
+      update:
+        output: "%prefix%&azTPA mis à jour vers la dernière version &e(%update%)&a, redémarrez le serveur."
+        no-update: "%prefix%&aVous utilisez déjà la dernière version."
+    reload:
+      usage: |-
+        %prefix%&bUtilisations de &e/%command% &a(reload|rl)&b:
+        &c-> &e/%command% &a(reload|rl) &6[all, commands, config, languages]
+      output: "%prefix%&aPlugin rechargé en &b%time%ms&a."
+      commands:
+        output: "%prefix%&aCommandes rechargées en &b%time%ms&a."
+      config:
+        output: "%prefix%&aConfiguration rechargée en &b%time%ms&a."
+      languages:
+        output: |-
+          %prefix%&aLangues rechargées en &b%time%ms&a.
+          &7Remarque : cela ne change pas la langue dans config.yml.
+  tpa:
+    usage: "%prefix% &c-> &e/%command% (Joueur)"
+    yourself: "%prefix%&cVous ne pouvez pas vous envoyer une demande."
+    already-requested: "%prefix%&cVous avez déjà envoyé une demande à &e%player%&c."
+    output: |-
+      &a
+      &aDemande envoyée à &e%player%
+      &aPour annuler, utilisez &e/%command-tpacancel%
+      &a
+    request-received: |-
+      &a
+      &aVous avez reçu une demande de &e%player%
+      &aAccepter : &e/%command-tpaccept%
+      &aRefuser : &e/%command-tpdeny%
+      &aExpire dans &c%time% secondes
+      &a
+  tpaccept:
+    output: "%prefix%&aDemande de &e%player%&a acceptée."
+    no-request: "%prefix%&cAucune demande à accepter."
+    no-request-from: "%prefix%&cAucune demande de &e%player%&c."
+  tpdeny:
+    output: "%prefix%&aDemande de &e%player%&a refusée."
+    no-request: "%prefix%&cAucune demande à refuser."
+    no-request-from: "%prefix%&cAucune demande de &e%player%&c."
+  tpacancel:
+    output: "%prefix%&aToutes vos demandes ont été annulées."
+    output-to: "%prefix%&aDemande à &e%player%&a annulée."
+    no-request: "%prefix%&cAucune demande à annuler."
+    no-request-to: "%prefix%&cAucune demande à &e%player%&c."

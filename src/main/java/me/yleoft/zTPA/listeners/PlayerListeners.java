@@ -17,6 +17,8 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
 
@@ -43,13 +45,13 @@ public class PlayerListeners extends ConfigUtils implements Listener {
         Player p = e.getPlayer();
         UUID uuid = p.getUniqueId();
         if(zTPA.tpaRequests.containsKey(uuid)) {
-            List<TeleportRequest> requests = zTPA.tpaRequests.get(uuid);
+            List<TeleportRequest> requests = new ArrayList<>(zTPA.tpaRequests.get(uuid));
             for (TeleportRequest request : requests) {
                 request.deleteRequest();
             }
         }
         if(zTPA.targetRequestMap.containsKey(uuid)) {
-            List<TeleportRequest> requests = zTPA.targetRequestMap.get(uuid);
+            List<TeleportRequest> requests = new ArrayList<>(zTPA.tpaRequests.get(uuid));
             for (TeleportRequest request : requests) {
                 request.deleteRequest();
             }

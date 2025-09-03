@@ -112,8 +112,17 @@ public final class zTPA extends JavaPlugin {
             getConfig();
         }
         List<FileUtils> fus = new ArrayList<>();
+        fus.add(FileManager.createFile("languages/de.yml"));
         fus.add(FileManager.createFile("languages/en.yml"));
+        fus.add(FileManager.createFile("languages/es.yml"));
+        fus.add(FileManager.createFile("languages/fr.yml"));
+        fus.add(FileManager.createFile("languages/it.yml"));
+        fus.add(FileManager.createFile("languages/nl.yml"));
+        fus.add(FileManager.createFile("languages/pl.yml"));
         fus.add(FileManager.createFile("languages/pt-br.yml"));
+        fus.add(FileManager.createFile("languages/ru.yml"));
+        fus.add(FileManager.createFile("languages/tr.yml"));
+        fus.add(FileManager.createFile("languages/zhcn.yml"));
         for(FileUtils fu : fus) {
             fu.saveDefaultConfig();
             fu.reloadConfig();
