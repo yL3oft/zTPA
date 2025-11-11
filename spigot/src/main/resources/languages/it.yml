@@ -1,0 +1,84 @@
+# Qui puoi gestire i messaggi degli hook
+hooks:
+  worldguard:
+    send-tpa-flag: "%prefix%&cNon puoi inviare una richiesta di teletrasporto qui."
+    accept-tpa-flag: "%prefix%&cNon puoi accettare una richiesta di teletrasporto qui."
+    deny-tpa-flag: "%prefix%&cNon puoi rifiutare una richiesta di teletrasporto qui."
+    cancel-tpa-flag: "%prefix%&cNon puoi annullare una richiesta di teletrasporto qui."
+    use-tpa-flag: "%prefix%&cNon puoi usare tpa qui."
+  vault:
+    cant-afford-command: "%prefix%&cHai bisogno di &6$%cost% &cper eseguire questo comando."
+
+# Messaggi relativi al tempo di attesa del teletrasporto
+teleport-warmup:
+  warmup: "%prefix%&aTeletrasporto tra %time% secondi... Non muoverti!"
+  warmup-actionbar: "&aTeletrasporto tra %time% secondi..."
+  cancelled: "%prefix%&cTi sei mosso! Teletrasporto annullato."
+  cancelled-actionbar: "&cTi sei mosso! Teletrasporto annullato."
+
+# Messaggi relativi ai comandi
+commands:
+  no-permission: "%prefix%&cNon hai il permesso di eseguire questo comando."
+  in-cooldown: "%prefix%&cDevi aspettare %timeleft% secondi prima di poter usare di nuovo questo comando."
+  cant-find-player: "%prefix%&cQuesto giocatore non è stato trovato."
+  only-executable-by-players: "%prefix%&cQuesto comando può essere eseguito solo dai giocatori."
+  more-than-one-request: "%prefix%&cHai più di una richiesta di teletrasporto, specifica il giocatore."
+
+  main:
+    help:
+      help-perm: |-
+        %prefix%&bUtilizzi di &e/%command%&b:
+        &c-> &e/%command% &a(help|?)
+        &c-> &e/%command% &a(reload|rl) &6[all, commands, config, languages]
+        &c-> &e/%command% &a(version|ver) &6[update]
+      help-noperm: |-
+        %prefix%&bUtilizzi di &e/%command%&b:
+        &c-> &e/%command% &a(help|?)
+        &c-> &e/%command% &a(version|ver)
+    version:
+      output: "%prefix%&bVersione attuale: &a%version%"
+      update:
+        output: "%prefix%&azTPA aggiornato all'ultima versione &e(%update%)&a, riavvia il server per applicare le modifiche."
+        no-update: "%prefix%&aStai già usando l'ultima versione di zTPABukkit."
+    reload:
+      usage: |-
+        %prefix%&bUtilizzi di &e/%command% &a(reload|rl)&b:
+        &c-> &e/%command% &a(reload|rl) &6[all, commands, config, languages]
+      output: "%prefix%&aPlugin ricaricato in &b%time%ms&a."
+      commands:
+        output: "%prefix%&aTutti i comandi del plugin ricaricati in &b%time%ms&a."
+      config:
+        output: "%prefix%&aFile di configurazione ricaricato in &b%time%ms&a."
+      languages:
+        output: |-
+          %prefix%&aLingue del plugin ricaricate in &b%time%ms&a.
+          &7Nota: Questo non aggiornerà la lingua da config.yml, usa '/%command% reload config' per farlo.
+  tpa:
+    usage: "%prefix% &c-> &e/%command% (Giocatore)"
+    yourself: "%prefix%&cNon puoi inviare una richiesta di teletrasporto a te stesso."
+    already-requested: "%prefix%&cHai già inviato una richiesta di teletrasporto a &e%player%&c."
+    output: |-
+      &a
+      &aRichiesta di teletrasporto inviata a &e%player%
+      &aPer annullare, usa &e/%command-tpacancel%
+      &a
+    request-received: |-
+      &a
+      &aHai ricevuto una richiesta di teletrasporto da &e%player%
+      &aPer accettare, usa &e/%command-tpaccept%
+      &aPer rifiutare, usa &e/%command-tpdeny%
+      &aQuesta richiesta scadrà in &c%time% secondi
+      &a
+  tpaccept:
+    output: "%prefix%&aRichiesta di teletrasporto da &e%player%&a accettata."
+    no-request: "%prefix%&cNon hai nessuna richiesta di teletrasporto da accettare."
+    no-request-from: "%prefix%&cNon hai nessuna richiesta di teletrasporto da &e%player%&c."
+  tpdeny:
+    output: "%prefix%&aRichiesta di teletrasporto da &e%player%&a rifiutata."
+    no-request: "%prefix%&cNon hai nessuna richiesta di teletrasporto da rifiutare."
+    no-request-from: "%prefix%&cNon hai nessuna richiesta di teletrasporto da &e%player%&c."
+  tpacancel:
+    output: "%prefix%&aTutte le tue richieste di teletrasporto sono state annullate."
+    output-to: "%prefix%&aRichiesta di teletrasporto a &e%player%&a annullata."
+    no-request: "%prefix%&cNon hai nessuna richiesta di teletrasporto da annullare."
+    no-request-to: "%prefix%&cNon hai nessuna richiesta di teletrasporto a &e%player%&c."

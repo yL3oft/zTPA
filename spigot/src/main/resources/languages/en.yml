@@ -1,0 +1,86 @@
+# Here you can manage hook messages
+hooks:
+  worldguard:
+    send-tpa-flag: "%prefix%&cYou can't send a teleport request here."
+    accept-tpa-flag: "%prefix%&cYou can't accept a teleport request here."
+    deny-tpa-flag: "%prefix%&cYou can't deny a teleport request here."
+    cancel-tpa-flag: "%prefix%&cYou can't cancel a teleport request here."
+    use-tpa-flag: "%prefix%&cYou can't use tpa here."
+  vault:
+    cant-afford-command: "%prefix%&cYou need &6$%cost% &cin order to execute this command."
+
+# Messages related to teleport warmup
+teleport-warmup:
+  warmup: "%prefix%&aTeleporting in %time% seconds... Don't move!"
+  warmup-actionbar: "&aTeleporting in %time% seconds..."
+  cancelled: "%prefix%&cYou moved! Teleportation cancelled."
+  cancelled-actionbar: "&cYou moved! Teleportation cancelled."
+
+# Messages related to commands
+commands:
+  # Up here you will find messages that can be used in multiple commands
+  no-permission: "%prefix%&cYou don't have permission to execute this command."
+  in-cooldown: "%prefix%&cYou must wait %timeleft% seconds before using this command again."
+  cant-find-player: "%prefix%&cThis player was not found."
+  only-executable-by-players: "%prefix%&cThis command can only be executed by players."
+  more-than-one-request: "%prefix%&cYou have more than one teleport request, please specify the player you want to accept/deny the request from."
+
+  # Below you will find messages specific for the commands
+  main:
+    help:
+      help-perm: |-
+        %prefix%&bUsages of &e/%command%&b:
+        &c-> &e/%command% &a(help|?)
+        &c-> &e/%command% &a(reload|rl) &6[all, commands, config, languages]
+        &c-> &e/%command% &a(version|ver) &6[update]
+      help-noperm: |-
+        %prefix%&bUsages of &e/%command%&b:
+        &c-> &e/%command% &a(help|?)
+        &c-> &e/%command% &a(version|ver)
+    version:
+      output: "%prefix%&bCurrent version: &a%version%"
+      update:
+        output: "%prefix%&azTPA updated to the latest version &e(%update%)&a, please restart your server to apply the changes."
+        no-update: "%prefix%&aYou are already using the latest version of zTPABukkit."
+    reload:
+      usage: |-
+        %prefix%&bUsages of &e/%command% &a(reload|rl)&b:
+        &c-> &e/%command% &a(reload|rl) &6[all, commands, config, languages]
+      output: "%prefix%&aReloaded plugin in &b%time%ms&a."
+      commands:
+        output: "%prefix%&aReloaded all plugin commands in &b%time%ms&a."
+      config:
+        output: "%prefix%&aReloaded plugin config file in &b%time%ms&a."
+      languages:
+        output: |-
+          %prefix%&aReloaded plugin languages in &b%time%ms&a.
+          &7Note: This will not update the language from config.yml, use '/%command% reload config' to do that.
+  tpa:
+    usage: "%prefix% &c-> &e/%command% (Player)"
+    yourself: "%prefix%&cYou can't send a teleport request to yourself."
+    already-requested: "%prefix%&cYou already sent a teleport request to &e%player%&c."
+    output: |-
+      &a
+      &aTeleport request sent to &e%player%
+      &aTo cancel, use &e/%command-tpacancel%
+      &a
+    request-received: |-
+      &a
+      &aYou have received a teleport request from &e%player%
+      &aTo accept, use &e/%command-tpaccept%
+      &aTo deny, use &e/%command-tpdeny%
+      &aThis request will expire in &c%time% seconds
+      &a
+  tpaccept:
+    output: "%prefix%&aTeleport request from &e%player%&a accepted."
+    no-request: "%prefix%&cYou don't have any teleport request to accept."
+    no-request-from: "%prefix%&cYou don't have any teleport request from &e%player%&c."
+  tpdeny:
+    output: "%prefix%&aTeleport request from &e%player%&a denied."
+    no-request: "%prefix%&cYou don't have any teleport request to deny."
+    no-request-from: "%prefix%&cYou don't have any teleport request from &e%player%&c."
+  tpacancel:
+    output: "%prefix%&aAll your teleport requests have been cancelled."
+    output-to: "%prefix%&aTeleport request to &e%player%&a cancelled."
+    no-request: "%prefix%&cYou don't have any teleport request to cancel."
+    no-request-to: "%prefix%&cYou don't have any teleport request to &e%player%&c."

@@ -1,0 +1,86 @@
+# Aqui você pode gerenciar mensagens de integração
+hooks:
+  worldguard:
+    send-tpa-flag: "%prefix%&cVocê não pode enviar um pedido de teleporte aqui."
+    accept-tpa-flag: "%prefix%&cVocê não pode aceitar um pedido de teleporte aqui."
+    deny-tpa-flag: "%prefix%&cVocê não pode recusar um pedido de teleporte aqui."
+    cancel-tpa-flag: "%prefix%&cVocê não pode cancelar um pedido de teleporte aqui."
+    use-tpa-flag: "%prefix%&cVocê não pode usar o comando de teleporte aqui."
+  vault:
+    cant-afford-command: "%prefix%&cVocê precisa de &6$%cost% &cpara executar este comando."
+
+# Mensagens relacionadas ao tempo de espera para teleporte
+teleport-warmup:
+  warmup: "%prefix%&aTeleportando em %time% segundos... Não se mova!"
+  warmup-actionbar: "&aTeleportando em %time% segundos..."
+  cancelled: "%prefix%&cVocê se moveu! Teleporte cancelado."
+  cancelled-actionbar: "&cVocê se moveu! Teleporte cancelado."
+
+# Mensagens relacionadas a comandos
+commands:
+  # Aqui em cima você vai achar mensagens que podem ser utilizadas em vários comandos
+  no-permission: "%prefix%&cVocê não tem permissão para executar este comando."
+  in-cooldown: "%prefix%&cVocê deve esperar %timeleft% segundos antes de usar este comando novamente."
+  cant-find-player: "%prefix%&cEste jogador não foi encontrado."
+  only-executable-by-players: "%prefix%&cEste comando só pode ser executado por jogadores."
+  more-than-one-request: "%prefix%&cVocê tem mais de um pedido de teleporte, por favor especifique o jogador do qual você deseja aceitar/recusar o pedido."
+
+  # Aqui embaixo vai achar mensagens especificas de alguns comandos.
+  main:
+    help:
+      help-perm: |-
+        %prefix%&bUsos de &e/%command%&b:
+        &c-> &e/%command% &a(help|?)
+        &c-> &e/%command% &a(reload|rl) &6[all, commands, config, languages]
+        &c-> &e/%command% &a(version|ver) &6[update]
+      help-noperm: |-
+        %prefix%&bUsos de &e/%command%&b:
+        &c-> &e/%command% &a(help|?)
+        &c-> &e/%command% &a(version|ver)
+    version:
+      output: "%prefix%&bVersão atual: &a%version%"
+      update:
+        output: "%prefix%&azTPA foi atualizado para a versão mais recente &e(%update%)&a, reinicie o servidor para aplicar as alterações."
+        no-update: "%prefix%&aVocê já está usando a versão mais recente de zTPABukkit."
+    reload:
+      usage: |-
+        %prefix%&bUsos de &e/%command% &a(reload|rl)&b:
+        &c-> &e/%command% &a(reload|rl) &6[all, commands, config, languages]
+      output: "%prefix%&aPlugin recarregado em &b%time%ms!"
+      commands:
+        output: "%prefix%&aTodos comandos do plugin foram recarregados em &b%time%ms!"
+      config:
+        output: "%prefix%&aA configuração do plugin foi recarregada em &b%time%ms!"
+      languages:
+        output: |-
+          %prefix%&aAs linguas do plugin foram recarregadas em &b%time%ms!
+          &7Nota: Isso não ira recarregar a lingua no config.yml, use '/%command% reload config' para isso.
+  tpa:
+    usage: "%prefix% &c-> &e/%command% (Jogador)"
+    yourself: "%prefix%&cVocê não pode enviar um pedido de teleporte para si mesmo."
+    already-requested: "%prefix%&cVocê já enviou um pedido de teleporte para &e%player%&c."
+    output: |-
+      &a
+      &aPedido de teleporte enviado para &e%player%
+      &aPara cancelar, use &e/%command-tpacancel%
+      &a
+    request-received: |-
+      &a
+      &aVocê recebeu um pedido de teleporte de &e%player%
+      &aPara aceitar, use &e/%command-tpaccept%
+      &aPara recusar, use &e/%command-tpdeny%
+      &aEste pedido irá expirar em &c%time% segundos
+      &a
+  tpaccept:
+    output: "%prefix%&aPedido de teleporte de &e%player%&a aceito."
+    no-request: "%prefix%&cVocê não tem nenhum pedido de teleporte para aceitar."
+    no-request-from: "%prefix%&cVocê não tem nenhum pedido de teleporte de &e%player%&c."
+  tpdeny:
+    output: "%prefix%&aPedido de teleporte de &e%player%&a recusado."
+    no-request: "%prefix%&cVocê não tem nenhum pedido de teleporte para recusar."
+    no-request-from: "%prefix%&cVocê não tem nenhum pedido de teleporte de &e%player%&c."
+  tpacancel:
+    output: "%prefix%&aTodos os pedidos de teleporte foram cancelados."
+    output-to: "%prefix%&aPedido de teleporte para &e%player%&a cancelado."
+    no-request: "%prefix%&cVocê não tem nenhum pedido de teleporte para cancelar."
+    no-request-to: "%prefix%&cVocê não tem nenhum pedido de teleporte para &e%player%&c."
